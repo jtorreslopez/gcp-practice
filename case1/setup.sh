@@ -18,7 +18,7 @@ gcloud compute addresses create instance-2-local-address --region us-central1 --
 #
 #
 gcloud compute instances create instance1 --image-family=centos-7 --image-project=centos-cloud --zone=us-central1-a --machine-type=f1-micro --boot-disk-size=20GB --hostname=instance1.example.com --network=network-1 --subnet=network-1-subnet-a --private-network-ip=instance-1-local-address
-gcloud compute instances create instance2 --image-family=ubuntu-2010 --image-project=ubuntu-os-cloud --zone=us-central1-a --machine-type=f1-micro --boot-disk-size=20GB --hostname=instance2.example.com --network=network-1 --subnet=network-1 --subnet=network-1-subnet-a --private-network-ip=instance-2-local-address
+gcloud compute instances create instance2 --image-family=ubuntu-2010 --image-project=ubuntu-os-cloud --zone=us-central1-a --machine-type=f1-micro --boot-disk-size=20GB --hostname=instance2.example.com --network=network-1  --subnet=network-1-subnet-a --private-network-ip=instance-2-local-address
 #
 #
 gcloud compute instances create instance3 --image-family=ubuntu-2010 --image-project=ubuntu-os-cloud --zone=us-central1-a --machine-type=f1-micro --boot-disk-size=20GB --hostname=instance3.example.com --network=network-2 --subnet=network-2-subnet-a

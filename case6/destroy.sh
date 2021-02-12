@@ -17,6 +17,8 @@ gcloud compute instances delete client --zone=us-west1-b --quiet
 
 gcloud compute firewall-rules delete network-1-allow-http --quiet
 gcloud compute firewall-rules delete network-1-allow-ssh-icmp --quiet
+gcloud compute firewall-rules delete network-1-allow-health-checks --quiet
+gcloud compute firewall-rules delete network-1-allow-internal --quiet
 gcloud compute networks subnets delete network-1-subnet-proxy-only --region=us-west1 --quiet
 gcloud compute networks subnets delete network-1-subnet-backends --region=us-west1 --quiet
 gcloud compute networks subnets delete network-1-subnet-clients --region=us-west1 --quiet

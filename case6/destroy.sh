@@ -9,7 +9,7 @@ gcloud compute backend-services delete backend-service-1 --region=us-west1 --qui
 gcloud compute health-checks delete basic-html-check --quiet
 
 gcloud compute instance-groups managed delete backend-1-group --zone=us-west1-b --quiet
-gcloud compute instance-groups managed delete backend-2-group --zone=us-west1-b --quiet
+gcloud compute instance-groups managed delete backend-2-group --zone=us-west1-c --quiet
 
 gcloud compute instance-templates delete backend-2-template --quiet
 gcloud compute instance-templates delete backend-1-template --quiet

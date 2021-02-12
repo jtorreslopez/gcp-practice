@@ -1,3 +1,7 @@
+Each case has:
+-> setup.sh to create all the GCP resources
+-> destroy.sh to delete all the resources created
+-> gcp-caseX.pdf which shows a simple diagram of the configuration.
 
 Case 1: Consist of allowing comunication between two VPC networks using VPC Peering service. To test the configuration I used some compute instances in those networks to verify the conectivity using a simple ping.
 

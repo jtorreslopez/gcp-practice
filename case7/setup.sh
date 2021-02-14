@@ -11,10 +11,15 @@ gcloud compute firewall-rules create network-1-allow-http --network=network-1 --
 gcloud compute firewall-rules create network-1-allow-health-checks --network=network-1 --direction=INGRESS --action=ALLOW --rules=tcp --target-tags=http-server --source-ranges=35.191.0.0/16,130.211.0.0/22
 gcloud compute firewall-rules create network-1-allow-internal --network=network-1 --direction=INGRESS --action=ALLOW --rules=tcp,udp,icmp --source-ranges=10.20.0.0/29,10.30.0.0/24,10.50.0.0/26
 
+# Create the Cloud NAT service
+# ''''''''''''''''''''''''''''
+gcloud compute routers create router-1 --network=network-1 --region=us-west1
+gcloud compute routers nats create nat-gw-us-west --router=router-1 --auto-allocate-nat-external-ips --nat-custom-subnet-ip-ranges=network-1-subnet-backends --region=us-west1
+
 # Create the Instance-Templates for the backends machines
 # '''''''''''''''''''''''''''''''''''''''''''''''''''''''
-gcloud compute instance-templates create backend-1-template --machine-type=f1-micro --boot-disk-size=20GB --network=network-1 --subnet=network-1-subnet-backends --metadata-from-file=startup-script=./install_apache_backend1.sh --tags=http-server --region=us-west1
-gcloud compute instance-templates create backend-2-template --machine-type=f1-micro --boot-disk-size=20GB --network=network-1 --subnet=network-1-subnet-backends --metadata-from-file=startup-script=./install_apache_backend2.sh --tags=http-server --region=us-west1
+gcloud compute instance-templates create backend-1-template --machine-type=f1-micro --boot-disk-size=20GB --no-address --network=network-1 --subnet=network-1-subnet-backends --metadata-from-file=startup-script=./install_apache_backend1.sh --tags=http-server --region=us-west1
+gcloud compute instance-templates create backend-2-template --machine-type=f1-micro --boot-disk-size=20GB --no-address --network=network-1 --subnet=network-1-subnet-backends --metadata-from-file=startup-script=./install_apache_backend2.sh --tags=http-server --region=us-west1
 
 # Create the managed Instance-Groups
 # ''''''''''''''''''''''''''''''''''

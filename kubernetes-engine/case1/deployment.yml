@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: httpd-deployment
+spec:
+  replicas: 8
+  selector:
+    matchLabels:
+      app: httpd
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      volumes:
+        - name: gcp-file-store
+          nfs:
+            path: /export1
+            server: 10.24.168.90
+      containers:
+        - name: httpd
+          image: httpd
+          volumeMounts:
+            - name: gcp-file-store
+              mountPath: /usr/local/apache2/htdocs
